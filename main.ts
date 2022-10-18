@@ -5,6 +5,7 @@ namespace SpriteKind {
     export const Boat2 = SpriteKind.create()
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    rotateFlag = "nothing"
     grid.move(cursor, 0, -1)
     grid.place(shadowCursor, tiles.getTileLocation(grid.spriteCol(cursor), grid.spriteRow(cursor) + 1))
 })
@@ -29,10 +30,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    rotateFlag = "nothing"
     grid.move(cursor, -1, 0)
     grid.place(shadowCursor, tiles.getTileLocation(grid.spriteCol(cursor) + 1, grid.spriteRow(cursor)))
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    rotateFlag = "nothing"
     grid.move(cursor, 1, 0)
     grid.place(shadowCursor, tiles.getTileLocation(grid.spriteCol(cursor) + -1, grid.spriteRow(cursor)))
 })
@@ -56,6 +59,7 @@ function moveBoat (boatArray: any[]) {
     }
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    rotateFlag = "nothing"
     grid.move(cursor, 0, 1)
     grid.place(shadowCursor, tiles.getTileLocation(grid.spriteCol(cursor), grid.spriteRow(cursor) + -1))
 })
@@ -90,8 +94,9 @@ let moveBoatFlag = 0
 let boatSpriteArray: Sprite[][] = []
 let boatRotateArray: string[] = []
 let currentBoat = 0
+let rotateFlag = ""
 tiles.setCurrentTilemap(tilemap`level1`)
-let rotateFlag = "nothing"
+rotateFlag = "nothing"
 currentBoat = 0
 boatRotateArray = ["up", "up", "up"]
 boatSpriteArray = [[sprites.create(img`
